@@ -1,5 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -28,6 +26,40 @@ model Client {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
+  pedidos Pedidos[]
+
+
+  @@map("clientes")
+}
+
+model Pedidos {
+  id        String  @id @default(uuid())
+  cliente Client @relation(fields: [id_cliente], references: [id])
+  id_cliente String
+  valor_total Float
+  status String
+  forma_pagamento String?
+  valor_frete Float?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+  itens_pedidos Itens_pedidos[]
+
+  @@map("pedidos")
+}
+
+model Itens_pedidos {
+  id        String  @id @default(uuid())
+  pedido Pedidos @relation(fields: [id_pedido], references: [id])
+  id_pedido String
+  produto Produto @relation(fields: [id_produto], references: [id])
+  id_produto String
+  quantidade Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  @@map("itens_pedidos")
 }
 
 model Produto {
@@ -36,8 +68,19 @@ model Produto {
   descricao String
   preco     Float
   preco_custo Float
+  url_imagem String
+  categoria String
+  cor       String
+  preco_sugerido Float
+  marca     String
+  nota      Float
+  condicao String
+  detalhes String
   estoque   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
+  itens_pedidos Itens_pedidos[]
+
+  @@map("produtos")
 }
