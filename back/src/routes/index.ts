@@ -1,12 +1,15 @@
 import { Router } from "express";
 import { CreateClient } from "../controllers/client/CreateClient";
+import createOrder from "../controllers/order/CreateOrder";
 
-const routes = Router();
+const router = Router();
 
-routes.get("/", (request, response) => {
+router.get("/", (request, response) => {
   return response.json({ message: "Hello World" });
 });
 
-routes.post("/client", CreateClient);
+router.post("/client", CreateClient);
+router.post("/order", createOrder);
 
-export default routes;
+
+export default router;

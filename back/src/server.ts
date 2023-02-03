@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response  } from "express";
 import cors from 'cors';
-import routes from './routes';
+import router from './routes';
 
 const app = express();
 
@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(routes)
+app.use(router)
 
 
 
