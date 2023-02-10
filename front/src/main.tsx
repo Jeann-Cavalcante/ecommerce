@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.css'
+import RoutesApp from './routes'
+import Home from './pages/Home'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-
-  </React.StrictMode>,
-)
+    <RoutesApp />
+  </React.StrictMode>
+);
