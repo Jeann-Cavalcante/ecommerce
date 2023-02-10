@@ -20,7 +20,8 @@ async function createOrder(req: Request, res: Response) {
         status,
         forma_pagamento,
         valor_frete,
-      },
+      },     
+      
     });
   
     return res.status(201).json(order);
